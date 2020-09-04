@@ -1,0 +1,681 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[9pt]{article}
+
+\usepackage{venndiagram}
+\usepackage{amssymb} 
+\usepackage{tikz} 
+\usetikzlibrary{positioning}
+\usepackage[T1]{fontenc}%Codificação
+\usepackage[utf8]{inputenc}%Inclui palavras com acento
+\usepackage[brazil]{babel} %Traduz para o português
+\usepackage[top=1.5cm,left=1.5cm,right=1.5cm,bottom=1.5cm]{geometry}%margens
+%\usepackage{amsmath,amssymb}%Expressoes matemáticas e símbolos
+%\usepackage[a4paper, total={7.5in, 10in}]{geometry}
+%\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+ \usepackage[T1]{fontenc}%Codificação
+\usepackage[utf8]{inputenc}%Inclui palavras com acento
+\usepackage[brazil]{babel} %Traduz para o português
+\usepackage[top=2cm,left=1cm,right=1.5cm,bottom=2cm]{geometry}%margens
+\usepackage{amsmath,amssymb}%Expressoes matemáticas e símbolos
+\RequirePackage{amssymb, amsfonts, amsmath, latexsym, verbatim, xspace, setspace}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multicol}% Múltiplas colunas
+\usepackage{multirow}% permite mesclar células de modo horizontal
+\usepackage{array}%para tabelas
+\usepackage{ragged2e}%alinhamento
+\usepackage{graphicx}%Para inserir imagens
+\usepackage{pdflscape}%Permite mudar a orientacao da pagina
+\usepackage{epstopdf} %converte figs eps em figs pdf
+\usepackage{booktabs}%tabelas
+\usepackage{pdfpages}%Permite incluir arquivos pdf
+\usepackage[sort&compress,square,comma, authoryear]{natbib}%Referencias
+\usepackage[colorlinks=true,urlcolor=magenta,citecolor=red,linkcolor=blue,bookmarks=true]{hyperref}%Links e citações
+\usepackage{enumerate}%enumeracao
+\usepackage{enumitem}%enumeracao
+\usepackage{tkz-euclide}
+\usepackage{blindtext}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{theorem}[2][Teorema]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lema]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercício]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corolario]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solução]}{\end{proof}}
+
+\newenvironment{definition}[2][Definição]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Matemática. Aula - 1}%replace X with the appropriate number
+\author{Prof. Henrique Brentan\\ %replace with your name
+.} %if necessary, replace with your course title
+\date{}
+\maketitle
+ 
+\section{Conjunto}
+
+A ideia de conjuntos está ligada ao fato de associarmos coisas semelhantes e diferenciarmos coisas não semelhantes. Neste capítulo, faremos uma revisão de rápida das noções de conjuntos e em seguida, aplicaremos essas noções aos principais conjuntos numéricos (Naturais $\mathbb{N}$, Inteiros \mathbb{Z}, Racionais \mathbb{Q} e Irracionais \mathbb{I}). 
+
+\vspace{0.3cm}
+
+\subsection{Conjuntos}
+
+\begin{axiom}
+\textbf{\textit{Conjunto}} é uma coleção, um agrupamento, uma classe, uma reunião de coisas semelhantes, de números com uma mesma propriedade, etc.
+\end{axiom}
+
+Exemplos:
+\begin{enumerate}
+    \begin{enumerate}
+        \item Conjunto de planetas do sistema solar (Forma escrita).\\
+        Representação em desenhos:\\
+        \tikzset{partial ellipse/.style args =
+                 {#1:#2:#3}{insert path={+ (#1:#3) arc (#1:#2:#3)}}}
+        \begin{center}
+            \begin{tikzpicture}[scale=1,>=latex]
+                %  ellipses
+                \draw [fill=white!90!red]    (3,-1.8) ellipse    (4cm and 1 cm);
+                \draw [fill=yellow!90!green] (3,-1.8) ellipse (3cm and 0.75 cm);
+                \draw [fill=white!90!green]  (3,-1.8) ellipse  (2cm and 0.5 cm);
+
+                % -- Sol
+                \shade [ball color=gray!10!yellow] (3,-1.8) circle (1);
+                \node (soleil) at (3,-1.8) {\bf Sol};
+                % partial ellipse pour tracé devant le Soleil
+                \draw (3,-1.8) [partial ellipse=220:320:2cm and 0.5cm]
+                (3,-1.8) [partial ellipse=220:320:3cm and 0.75cm];
+
+                % Venus
+                \shade [ball color=gray!10!orange] (1,-1.8) circle (.2);
+                \node (venus) at (1.5,-1.45) {Mercúrio}; 
+
+                % ombre de Venus
+                \draw[color=white!70!black,fill=white!70!black] (1.6,-2.3) ellipse (2mm and 0.5mm);
+
+                % Mercure
+                \shade [ball color=gray!10!orange] (5,-1.225) circle (.25);
+                \node (mercure) at (5,-0.8) {Vênus}; 
+
+                % Earth
+                \shade [ball color=white!50!blue] (5.75,-2.5) circle (.33);
+                \node (terre) at (6.6,-2.6) {\bf Terra};
+
+                % Lune
+                %\shade [ball color=yellow] %(5.25,-2.8) circle (.1);
+                %\node (lune) at (5.25,-3) {Lune};
+     
+                % Mars
+                \draw (3,-1.8) [partial ellipse=45:120:9cm and 2.5cm];
+                \shade [ball color=black!50!red] (5,0.66) circle (.15);
+                \node (mars) at (5,1) {\bf Marte};   
+                % trajet
+                %\draw [line width=2pt,blue,->,>=latex] (terre) to[out=0,in=0] (mars);   
+            \end{tikzpicture}
+        \end{center}\\
+        
+        \vspace{0.1ex}\\
+        Representação pela citação dos elementos :\\ P = \{Mercúrio, Vênus, Terra, Marte, Júpter, Saturno, Urano, Netuno.\}\\
+        
+        \vspace{0.1ex}\\
+        Representação de Euler-Venn: \\
+        \begin{center}
+            \begin{tikzpicture}[scale=1]
+                \usetikzlibrary{arrows}
+                \usetikzlibrary{shapes}
+                %\tikzstyle{every node}=[rotate=0, ultra thick, draw=black,
+                minimum width=50pt,
+                minimum height=50pt,
+                align=center]
+                \node [ellipse,
+                rotate=0, 
+                ultra thick, 
+                draw=black,
+                minimum width=50pt,
+                minimum height=50pt,
+                align=center] (a) {$\cdot$Merc.\hspace{1ex}$\cdot$Vên.\hspace{1ex}$\cdot$Ter.\hspace{1ex}$\cdot$Mar.\hspace{1ex}$\cdot$Jup.\hspace{1ex}...};
+                 \node (b) at (0.5,1.5) {\textbf{P}};
+            \end{tikzpicture}
+        \end{center}
+        
+    \item Conjunto das vogais (forma escrita).\\ 
+        Representação pela descrição dos elementos:\\
+        V = \{a,e,i,o,u\}\\
+        Representação de Euler-Venn:\hspace{0.5cm}
+        \begin{center}
+            \begin{tikzpicture}[scale=1]
+                \usetikzlibrary{arrows}
+                \usetikzlibrary{shapes}
+                %\tikzstyle{every node}=[rotate=0, ultra thick, draw=black,
+                minimum width=50pt,
+                minimum height=50pt,
+                align=center]
+                \node [ellipse,
+                rotate=0, 
+                ultra thick, 
+                draw=black,
+                minimum width=50pt,
+                minimum height=50pt,
+                align=center] (a) {$\cdot$a\hspace{1ex}$\cdot$e\hspace{1ex}$\cdot$i\hspace{1ex}$\cdot$o\hspace{1ex}$\cdot$u\hspace{1ex}};
+                 \node (b) at (0.5,1.5) {\textbf{V}};
+            \end{tikzpicture}
+        \end{center}
+        \item Conjunto dos números ímpares (Forma escrita).\\
+         Representação pelos elementos:\\ Ímpares = \{1, 3, 5, 7, 9, 11, 13, 15...\}\\
+         \item Conjunto dos números pares (Forma escrita).\\
+         Representação pelos elementos:\\ Pares = \{2, 4, 6, 8, 10, 12, 14...\}\\
+         \item Conjunto dos números primos (Forma escrita).\\
+         Representação pelos elementos:\\ 
+         Primos = \{2, 3, 5, 7, 11, 13, 17, 19, 23...\}\\
+         \item Conjunto dos múltiplos de 5 (Forma escrita).\\
+         Representação pelos elementos:\\ 
+         M(5)=\{5, 10, 15, 20, 25, 30,35...\}\\
+         \item Conjunto dos divisores positivos de 16 (Forma escrita).\\
+         Representação pelos elementos:\\ 
+         D(16)= \{1, 2, 4, 8, 16\}\\
+         \item Conjunto dos inteiros de $-5$ até $5$.  (Forma escrita).\\
+         Representação pelos elementos:\\ 
+         \{$x\in\mathbb{Z}$ | -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5\}\\
+         \{$x\in\mathbb{Z}$ | -5 \leq x \leq 5\}\\
+        
+    \end{enumerate}
+\end{enumerate}\\
+
+\textbf{OBS.1:} Pense um pouco! Caso não fosse a escrita e a liguagem matemática, toda vez que nos referíssemos ao conjunto dos planetas com a finalidade de fazer cálculos e esquematizações teríamos que desenhar todos os nove planetas. Assim, a importância da escrita e da liguagem matemática é a \textbf{SIMPLIFICAÇÃO}.\\
+
+\textbf{OBS. 2:} GERALMENTE, os conjuntos são indicados por uma letra MAIÚSCULA ($\mathbb{A}$, $\mathbb{B}$, $\mathbb{C}$,...).\\
+
+\subsection{Elemento}
+\begin{axiom}
+\textbf{\textit{Elemento}} são os componentes do conjunto. É aquilo que se reuniu.
+\end{axiom}\\
+
+Nos exemplos da seção anterior, tínhamos o conjunto dos planetas. Seus elementos são os planetas. Então, \textbf{Mercúrio é elemento}, \textbf{Vênus é elemento}, \textbf{Terra é elemento}, \textbf{Marte é elemento}, etc. Entretanto note que o \textbf{Sol não é elemento}, por que não é \textbf{PLANETA}.\\
+
+\subsection{Relação de pertinência (Símbolos: $\in$ e $\notin$)}
+Quando um componente \textbf{é} elemento de um conjunto, dizemos que \textbf{este elemento pertence ao conjunto} utilizando o símbolo $\in$.\\
+
+Exemplo (conjunto dos planetas.):\\
+ P = \{Mercúrio, Vênus, Terra, Marte, Júpter, Saturno, Urano, Netuno.\} \\
+\begin{itemize}
+    \item Mercúrio $\in$ P (lê se: "o elemento Mercúrio pertence a P, o conjunto dos planetas".)
+    \item Terra $\in$ P (lê se: "o elemento Terra pertence a P, o conjunto dos planetas".)
+    \item Júpter $\in$ P (lê se: " Júpter pertence a P".)
+\end{itemize}\\
+
+\vspace{1cm}\\
+Quando um componente \textbf{NÃO é} elemento de um conjunto, dizemos que \textbf{este elemento NÃO pertence ao conjunto} utilizando o símbolo $\notin$.\\
+
+Exemplo (conjunto dos planetas.):\\
+ P = \{Mercúrio, Vênus, Terra, Marte, Júpter, Saturno, Urano, Netuno.\} \\
+\begin{itemize}
+    \item Sol $\notin$ P (lê se: "o elemento Sol não pertence a P, o conjunto dos planetas".)
+    \item Asteróide $\notin$ P (lê se: "o elemento Asteróide não pertence a P, o conjunto dos planetas".)
+    \item Lua $\notin$ P (lê se: " a Lua não pertence a P".)
+\end{itemize}
+
+\subsection{Conjunto unitário}
+O \textbf{conjunto unitário} é um composto por \textbf{um único} elemento.\\
+Exemplos:
+\begin{itemize}
+    \item Conjunto dos divisores de 1\hspace{2cm} D(1)=$\{1\}$
+    \item Conjunto das soluções da equação $2x+1=5$\hspace{2cm} S=$\{2\}$
+\end{itemize}
+
+\subsection{Conjunto vazio (Símbolo: $\emptyset$)}
+O \textbf{cojunto vazio} é aquele que não possui elementos.\\
+Exemplos:
+\begin{itemize}
+    \item $\{x/x\neq x\}$\hspace{1cm} S=$\emptyset$
+    \item $\{x/x$ é ímpar e múltiplo de 2  $\}$\hspace{1cm} S=$\emptyset$
+\end{itemize}
+
+\subsection{Conjunto universo (Símbolo: $\mathbb{U}$).}
+O \textbf{cojunto universo} é conjunto que \textbf{engloba} todos os elementos de uma determinada situação, mesmo que estes elementos estejam subdividos.\\
+
+Exemplo:\\
+Considere 2 conjuntos de frutas:\\
+
+1 - Cojunto de frutas vermelhas:\\
+Vermelhas = \{Tomate, caqui, seriguela, pitanga, maçã,...\}\\
+
+2 - Conjunto de frutas verdes:\\
+Verdes = \{Melancia, maça verde, uva verde...\}\\
+
+Em relação a este problema, o conjunto universo seria o conjunto de \textbf{TODAS} as frutas que existem, sejam elas vermelhas, verdes, amarelas, brancas,... .  \\
+$\mathbb{U}=\{$banana, maçã, cajú, amora, melancia, ...$\}$. (conjunto universo!)\\
+
+Representação Euler-venn:\\
+\begin{center}
+    \begin{tikzpicture}
+        \filldraw[fill=gray!30] (-2,-2) rectangle (4,2)node [text=black,above] {$\mathbb{U}$ = frutas};
+            \scope % A \cap B
+            \clip (0,0) circle (1);
+            %\fill[gray] (1,0) circle (1);
+        \endscope
+        % outline
+        \draw (0,0) circle (1) node [text=black,above] {vermelhas}
+        (2,0) circle (1) node [text=black,above] {verdes};
+    \end{tikzpicture}
+\end{center}\\
+
+\textbf{Exercícios de fixação.}
+\begin{exercise}
+1 Represente matematicamente os elementos dos seguintes conjuntos:
+\begin{enumerate}
+    \begin{enumerate}
+        \item A = \{x | x são as cores do arco-íris\}
+        \item B = \{x | x são letras da palavra CONJUNTO\}
+        \item C = \{x | x são os dez primeiros números primos\}
+    \end{enumerate}
+\end{enumerate}
+\end{exercise}
+\begin{exercise}
+2 Escreva com símbolos
+\begin{enumerate}
+    \begin{enumerate}
+        \item o conjunto dos números primos
+        \item o conjunto dos dez primeiros múltiplos de 4.
+        \item o conjunto dos divisores positivos de 60.
+        \item o conjunto dos multiplos inteiros de 2, entre -15 e 15.
+    \end{enumerate}
+\end{enumerate}
+\end{exercise}
+\begin{exercise}
+3 Considerando o conjunto $P = \{x$ | $x$ é primo e menor que $25\}$, diga se as seguintes afirmações são verdadeiras ou falsas.
+\begin{enumerate}
+    \begin{enumerate}
+        \item $2\in P$
+        \item $0 \notin P$
+        \item $23 \notin P$
+        \item $1 \notin P$
+        \item $4 \in P$
+        \item $29 \in P$
+    \end{enumerate}
+\end{enumerate}
+\end{exercise}
+\begin{exercise}
+4 Classifique os conjuntos abaixo como unitários e vazios.
+\begin{enumerate}
+    \begin{enumerate}
+        \item S = \{ x | $x\cdot 0 = 0$\}
+        \item W = \{ x | $x<0$ e $x>0$\}
+        \item k = \{ x | x é divisor de 0\}
+        item S =\{ x | solução de $3x+3=12$\}
+    \end{enumerate}
+\end{enumerate}
+\end{exercise}
+ 
+\subsection{Conjuntos iguais.}
+Dois conjuntos $\mathbb{A}$ e $\mathbb{B}$ são iguais se todos os elementos que encontramos em $\mathbb{A}$ também encontramos em $\mathbb{B}$ e, reciprocamente, todos os elementos que encontramos em $\mathbb{B}$ também encontramos em $\mathbb{A}$\\  
+
+\textbf{Simbologia:} $\mathbb{A} = \mathbb{B} \iff (\forall x)(x\in\mathbb{A}\iff x\in\mathbb{B})$\\
+
+Lê-se "O conjunto A é igual o conjunto B, se e somente se, para qualquer elemento x, x é elemento de A se e somente se x é elemento de B".  
+
+\vspace{2ex}\\
+Exemplos de conjuntos iguais:
+\begin{itemize}
+    \item \{a, b, c, d\} = \{b, a, d, c\}
+    \item \{a, b, c, d\} = \{a, a, a, b, b, c, d, d, d\}
+\end{itemize}\\
+\textbf{OBS:} Note que não importa a "quantidade" de elementos, mas os elementos em si!\\
+\textbf{OBS:} Se o conjunto A e B não obedecem esta condição, então são diferentes, ou seja, não são iguais e escrevemos $\mathbb{A} \neq \mathbb{B}$.
+
+\subsection{Subconjuntos (Símbolos: $\subset$, $\supset$, $\not\subset$, $\not\supset$)}.
+Dizemos que $\mathbb{B}$ é um subconjunto de $\mathbb{A}$ se, e somente se, todo elemento do conjunto $\mathbb{B}$ é também elemento de $\mathbb{A}$.\\
+
+\textbf{Simbologia:} $\mathbb{B}\subset \mathbb{A} \iff (\forall x)(x\in\mathbb{A}\implies x\in\mathbb{B})$
+
+\textbf{Representação de Euler-Venn}:
+\tikzset{set/.style={draw,circle,inner sep=2pt,align=center}}
+\begin{center}
+    \begin{tikzpicture}[scale=1,transform shape]
+         \filldraw[fill=white!30] (-1.5,-1.5) rectangle (1.5,1.5)node [text=black,above] {$\mathbb{U}$};
+        %\node[set,fill=blue!20,text width=3cm,label={[below=85pt of rea]$\mathbb{R}$}] (nat) at (0,-0.4)  (rea) {};
+        \node[set,fill=red!20,text width=2cm,label={[below=40pt of int]$\mathbb{A}$}] (int) at (0,-0.2)  {};
+        \node[set,fill=olive!20,text width=1cm] (nat) at (0,0) {$\mathbb{B}$};
+    \end{tikzpicture}
+\end{center}\\
+
+Exemplos:
+\begin{itemize}
+    \item \{a, b\} $\subset \{a, b, c, d\}$
+    \item \{a\} $\subset \{a, b\}$
+    \item \{x | x é natural e ímpar \} $\subset$ \{x | x é inteiro \}
+\end{itemize}\\
+\textbf{OBS:} Também podemos inverter a forma de escrever a relação anterior, tal como \{a, b, c, d\} $\supset \{a, b\}$, onde se lê "o conjunto \{a, b, c, d\} contém o conjunto \{a, b\}.\\
+Se o conjunto $\mathbb{B}$ \textbf{NÃO} está contido no conjunto $\mathbb{A}$, então escrevemos $\mathbb{B}\not\subset\mathbb{A}$ onde lemos "o conjunto $\mathbb{B}$ não está contido no conjunto $\mathbb{A}$".\\
+De outra forma, também podemos escrever $\mathbb{A}\not\supset\mathbb{B}$, onde lemos o conjunto $\mathbb{A}$ não contém o conjunto $\mathbb{B}$.\\
+
+Exemplos:\\
+
+\textbf{Representação de Euler-Venn}:
+\tikzset{set/.style={draw,circle,inner sep=0pt,align=center}}
+\begin{center}
+    \begin{tikzpicture}[scale=1,transform shape]
+         \filldraw[fill=white!30] (-1.5,-1.5) rectangle (1.5,1.5)node [text=black,above] {$\mathbb{U}$};
+        %\node[set,fill=blue!20,text width=3cm,label={[below=85pt of rea]$\mathbb{R}$}] (nat) at (0,-0.4)  (rea) {};
+        \node[set,fill=red!20,text width=2cm,label={[below=40pt of int]$\mathbb{A}\not\supset \mathbb{B}$}] (int) at (0.2,-0.2)  {};
+        \node[set,fill=olive!20,text width=1cm] (nat) at (-0.7,0) {$\mathbb{B}$};
+    \end{tikzpicture}
+    \begin{tikzpicture}[scale=1,transform shape]
+         \filldraw[fill=white!30] (-2,-1.5) rectangle (2.5,1.5)node [text=black,above] {$\mathbb{U}$};
+        %\node[set,fill=blue!20,text width=3cm,label={[below=85pt of rea]$\mathbb{R}$}] (nat) at (0,-0.4)  (rea) {};
+        \node[set,fill=red!20,text width=2cm,label={[below=40pt of int]$\mathbb{A}\not\supset \mathbb{B}$}] (int) at (1,-0.2)  {};
+        \node[set,fill=olive!20,text width=1cm] (nat) at (-1,0) {$\mathbb{B}$};
+    \end{tikzpicture}
+\end{center}\\
+\begin{itemize}
+    \item \{a,b,c\} $\not\subset$ \{a,b,d\}
+    \item \{a,b,c\} $\not\subset$ \{d, e, g\}
+\end{itemize}\\
+
+\textbf{Exercícios de fixação:}
+\begin{exercise}
+5 Dados $\mathbb{P} = \{3,4,7,8\}$ e $\mathbb{T}=\{3,5\}$
+\begin{enumerate}
+    \item escreva, utilizando a simbologia da teoria dos conjuntos, as seguintes sentenças:
+    \begin{enumerate}
+        \item 3 é elemento de P.
+        \item 7 não está em T.
+        \item T está contido em A.
+        \item 5 está pertence em T
+    \end{enumerate}
+    \item Classifique cada sentença da questão anterior em verdadeira ou falsa. 
+\end{enumerate}
+\end{exercise}
+\begin{exercise}
+6 Sejam os conjuntos $\mathbb{A}=\{1,3,4\}$, $\mathbb{B}=\{3,4\}$, $\mathbb{C}=\{1,3\}$. Com base nesses conjuntos, indique se cada senteça a seguir como verdadeira ou falsa.\\
+a) $\mathbb{A}\not\subset\mathbb{B}$ \hspace{0.3cm} b)$\mathbb{B}\not\subset\mathbb{A}$ \hspace{0.3cm} c)$\mathbb{B}\not\subset\mathbb{A}$\hspace{0.3cm} d)$\mathbb{A}\subset\mathbb{B}$ \hspace{0.3cm} e)$\mathbb{C}\not\subset\mathbb{B}$\hspace{0.3cm} f) $\mathbb{B}\not\subset\mathbb{C}$\hspace{0.3cm} g) $\mathbb{A} = \mathbb{B}$
+\end{exercise}
+
+\subsection{União de conjuntos (Símbolo: $\cup$)}
+Dizemos que a \textbf{união} de dois conjuntos $\mathbb{A}$ e $\mathbb{B}$ é reunir em um \textbf{único} conjunto todos os elementos que são do conjunto $\mathbb{A}$ ou do conjunto$\mathbb{B}$. Assim, podemos escrever $\mathbb{A}\cup \mathbb{B}$, onde se lê o conjunto $\mathbb{A}$ unido com o conjunto $\mathbb{B}$.\\
+
+\textbf{Simbologia:} $\mathbb{A}\cup \mathbb{B} =$ \{x | x $\in\mathbb{A}$ ou x $\in\mathbb{B}\}$.\\
+
+Lê se: O conjunto união de $\mathbb{A}$ com $\mathbb{B}$ é igual a todos os elementos tal que esses elementos pertencem a $\mathbb{A}$ ou pertencem a $\mathbb{B}$.\\
+
+\textbf{Representação de Euler-Venn:}\\
+\begin{center}
+    \begin{tikzpicture}[scale=0.5]
+        % left hand
+        \scope
+            \clip[gray] (-2,-2) rectangle (2,2) (1,0) circle (1);
+            \fill [gray] (0,0) circle (1);
+        \endscope
+        % right hand
+        \scope
+            \clip[gray] (-2,-2) rectangle (2,2) (0,0) circle (1);
+            \fill [gray] (1,0) circle (1);
+        \endscope
+        % outline
+        \draw (0,0) circle (1) (0,1)  node [text=black,above] {$A$}
+        (1,0) circle (1) (1,1)  node [text=black,above] {$B$}
+        (-2,-2) rectangle (3,2) node [text=black,above] {$U$}
+        \draw node at (0.5,-1.3) {$\mathbb{A}\cup\mathbb{B}$};
+    \end{tikzpicture}
+    \begin{tikzpicture}[scale=0.5]
+        % left hand
+        \scope
+            \clip[gray] (-2,-2) rectangle (4,2) (1,0) circle (1);
+            \fill [gray] (0,0) circle (1);
+        \endscope
+        % right hand
+        \scope
+            \clip[gray] (-2,-2) rectangle (4,2) (0,0) circle (1);
+            \fill [gray] (2.5,0) circle (1);
+        \endscope
+        % outline
+        \draw (0,0) circle (1) (0,1)  node [text=black,above] {$A$}
+        (2.5,0) circle (1) (2.5,1)  node [text=black,above] {$B$}
+        (-2,-2) rectangle (4,2) node [text=black,above] {$U$}
+        \draw node at (1,-1.3) {$\mathbb{A}\cup\mathbb{B}$};
+    \end{tikzpicture}
+    \begin{tikzpicture}[scale=0.5]
+        % left hand
+        \scope
+            \clip[gray] (-2,-2) rectangle (2,2) (1,0) circle (1);
+            \fill [gray] (0.3,0.3) circle (2);
+        \endscope
+        % right hand
+        \scope
+            \clip[gray] (-2,-2) rectangle (2,2) (0,0) circle (1);
+            \fill [gray] (1,0) circle (1);
+        \endscope
+        % outline
+        \draw (0,0) circle (1) (0,0)  node [text=black,above] {$A$}
+        (0.3,0.3) circle (2) (1,1)  node [text=black,above] {$B$}
+        (-2.5,-2) rectangle (3,3) node [text=black,above] {$U$}
+        \draw node at (0,-1.3) {$\mathbb{A}\cup\mathbb{B}$};
+    \end{tikzpicture}
+\end{center}\\
+
+Exemplos:
+\begin{itemize}
+    \item \{a,b\} $\cup$ \{a,b,c,d\} = \{a,b,c,d\}
+    \item \{a,b\} $\cup$ \{c,d\} = \{a,b,c,d\}
+    \item \{a,b,c\} $\cup$ \{c,d,e\} = \{a,b,c,d,e\}
+    \item \{a,b\} $\cup$ $\emptyset$ = \{a,b\}
+    \item $\emptyset$ $\cup$ $\emptyset$ = $\emptyset$
+\end{itemize}\\
+
+\subsection{Interseção de conjuntos (Símbolo: $\cap$)}
+Dizemos que a \textbf{Interseção} de dois conjuntos $\mathbb{A}$ e $\mathbb{B}$ é reunir em um \textbf{único} conjunto todos os elementos que são do conjunto $\mathbb{A}$ e do conjunto $\mathbb{B}$. Assim, podemos escrever $\mathbb{A}\cap \mathbb{B}$, onde se lê a interseção do conjunto $\mathbb{A}$ com o conjunto $\mathbb{B}$.\\
+
+\textbf{Simbologia:} $\mathbb{A}\cap \mathbb{B} =$ \{x | x $\in\mathbb{A}$ e x $\in\mathbb{B}\}$.\\
+
+Lê se: O conjunto união de $\mathbb{A}$ com $\mathbb{B}$ é igual a todos os elementos tal que esses elementos pertencem a $\mathbb{A}$ e pertencem a $\mathbb{B}$.\\
+\textbf{OBS:} São os elemntos comuns, ou seja, que pertencem ao conjunto $\mathbb{A}$ e ao conjunto $\mathbb{B}$. 
+
+\textbf{Representação de Euler-Venn:}\\
+\begin{center}
+    \begin{venndiagram2sets}[labelA= ,labelB=, radius=0.5cm ,overlap=0.5cm]%
+        \setkeys{venn}{shade=OliveDrab!40}
+        \fillACapB
+        \setpostvennhook{%
+            \draw (labelA) ++(-120:1cm) node{$ A$};
+            \draw (labelB) ++(-60:1cm) node{$B$};
+            \draw (labelAB) ++(90:0.2cm) node{$A\cap B$}; 
+            }%
+    \end{venndiagram2sets}
+    \begin{tikzpicture}[scale=0.5, fill=white]
+        % left hand
+        \scope
+            \clip (-2,-2) rectangle (4,2) (1,0) circle (1);
+            \fill (0,0) circle (1);
+        \endscope
+        % right hand
+        \scope
+            \clip (-2,-2) rectangle (4,2) (0,0) circle (1);
+            \fill (2.5,0) circle (1);
+        \endscope
+        % outline
+        \draw (0,0) circle (1) (0,1)  node [text=black,above] {$A$}
+        (2.5,0) circle (1) (2.5,1)  node [text=black,above] {$B$}
+        (-2,-2) rectangle (4,2) node [text=black,above] {$U$}
+        \draw node at (1,-1.3) {$\mathbb{A}\cap\mathbb{B}$};
+    \end{tikzpicture}
+    \begin{tikzpicture}[scale=0.5]
+        % left hand
+        \scope
+            \clip[gray] (-2,-2) rectangle (2,2) (1,0) circle (1);
+            \fill [white] (0.3,0.3) circle (2);
+        \endscope
+        % right hand
+        \scope
+            \clip[gray] (-2,-2) rectangle (2,2) (0,0) circle (1);
+            \fill [gray] (0,0) circle (1);
+        \endscope
+        % outline
+        \draw (0,0) circle (1) (0,0)  node [text=black,above] {$A$}
+        (0.3,0.3) circle (2) (1,1)  node [text=black,above] {$B$}
+        (-2.5,-2) rectangle (3,3) node [text=black,above] {$U$}
+        \draw node at (0,-1.3) {$\mathbb{A}\cap\mathbb{B}$};
+    \end{tikzpicture}
+\end{center}\\
+
+Exemplos:
+\begin{itemize}
+    \item \{a,b\} $\cap$ \{a,b,c,d\} = \{a,b\}
+    \item \{a,b\} $\cap$ \{c,d\} = $\emptyset$
+    \item \{a,b,c\} $\cap$ \{c,d,e\} = \{c\}
+    \item \{a,b\} $\cap$ $\emptyset$ = $\emptyset$
+\end{itemize}
+
+\subsection{Diferença de conjuntos (Símbolo: $-$)}
+Dizemos que a \textbf{Diferença} de dois conjuntos $\mathbb{A}$ e $\mathbb{B}$ constitui em considerar os elementos que são do conjunto $\mathbb{A}$ mas que não são do conjunto $\mathbb{B}$. Assim, podemos escrever $\mathbb{A} - \mathbb{B}$, onde se lê o conjunto $\mathbb{A}$ menos o conjunto $\mathbb{B}$.\\
+
+\textbf{Simbologia:} $\mathbb{A} - \mathbb{B} =$ \{x | x $\in\mathbb{A}$ e x $\notin\mathbb{B}\}$.\\
+
+Lê se: O conjunto diferença de $\mathbb{A}$ e $\mathbb{B}$ é igual a todos os elementos tal que esses elementos pertencem a $\mathbb{A}$ e não pertencem a $\mathbb{B}$.\\
+\textbf{OBS:} São os elemntos csó do conjunto A, ou seja, que pertencem ao conjunto $\mathbb{A}$ e não pertencem ao conjunto $\mathbb{B}$. 
+
+\textbf{Representação de Euler-Venn:}\\
+\begin{center}
+    \begin{venndiagram2sets}[labelA= ,labelB=, radius=0.5cm ,overlap=0.5cm]%
+        \setkeys{venn}{shade=OliveDrab!40}
+        \fillOnlyA
+        \setpostvennhook{%
+            \draw (labelA) ++(-120:1cm) node{$ A$};
+            \draw (labelB) ++(-60:1cm) node{$B$};
+            \draw (labelAB) ++(90:0.2cm) node{$A - B$}; 
+            }%
+    \end{venndiagram2sets}
+     \begin{tikzpicture}[scale=0.5, fill=white]
+        % left hand
+        \scope
+            \clip (-2,-2) rectangle (4,2) (1,0) circle (1);
+            \fill (0,0) circle (1);
+        \endscope
+        % right hand
+        \scope
+            \clip (-2,-2) rectangle (4,2) (0,0) circle (1);
+            \fill [gray] (2.5,0) circle (1);
+        \endscope
+        % outline
+        \draw (0,0) circle (1) (0,1)  node [text=black,above] {$B$}
+        (2.5,0) circle (1) (2.5,1)  node [text=black,above] {$A$}
+        (-2,-2) rectangle (4,2) node [text=black,above] {$U$}
+        \draw node at (1,-1.3) {$\mathbb{A} - \mathbb{B}$};
+    \end{tikzpicture}
+    \begin{tikzpicture}[scale=0.5]
+        % left hand
+        \scope
+            \clip[gray] (-2,-2) rectangle (2,2) (1,0) circle (1);
+            \fill [white] (0.3,0.3) circle (2);
+        \endscope
+        % right hand
+        \scope
+            \clip[gray] (-2,-2) rectangle (2,2) (0,0) circle (1);
+            \fill [gray] (0,0) circle (1);
+        \endscope
+        % outline
+        \draw (0,0) circle (1) (0,0)  node [text=black,above] {$A$}
+        (0.3,0.3) circle (2) (1,1)  node [text=black,above] {$B$}
+        (-2.5,-2) rectangle (3,3) node [text=black,above] {$U$}
+        \draw node at (0,-1.3) {$\mathbb{A} - \mathbb{B}$};
+    \end{tikzpicture}
+\end{center}\\
+
+Exemplos:
+\begin{itemize}
+    \item \{a,b\} $-$ \{b,c,d\} = \{a\}
+    \item \{a,b\} $-$ \{c,d\} = \{a, b\}
+    \item \{a,b,c\} $-$ \{c,d,e\} = \{a, b\}
+    \item \{a,b\} $-$ \{a,b,c,d\} = $\emptyset$
+\end{itemize}\\
+\textbf{OBS:} Caso tenhamos a situação $\mathbb{B} \in \mathbb{A}$ (terceira figura acima), escrevemos a diferença é usando a notação de  complementar: $\mathrm{C}_{\mathbb{A}}^{\mathbb{B}} = \mathbb{A}- \mathbb{B}$\\
+
+
+\textbf{Exercícios de prática.}
+\begin{exercise}
+1 (IFAM) Considere os conjuntos A = {0, 1, 2, 3}, B = {1, 3} e C = {1, 2, 3}. Qual conjunto representa o resultado de (A $\cup$ B) $\cap$ C?\\
+a) \{0, 1, 2, 3\}\hspace{1cm} b) \{ 1, 2, 3\}\hspace{1cm} c) \{ 1, 3\}\hspace{1cm} d) \{ 0, 2\}\hspace{1cm} e) \{0\}\hspace{1cm}   
+\end{exercise}
+\begin{exercise}
+2 (Vunesp) Pertencer ao conjunto A, pode ser apenas A ou pode ser apenas A e B ou pode ser A e B e C, mas não pode ser apenas A e C. Pertencer ao conjunto B, pode ser apenas B ou pode ser B e A ou pode ser B e C ou pode ser B e A e C. Pertencer ao conjunto C, pode ser C e B ou pode ser C e B e A, mas não pode ser C e A e não pode ser apenas C. Quanto às quantidades, e obedecendo às condições apresentadas, pertencer a apenas um conjunto, 5 elementos em cada caso; pertencer a apenas dois conjuntos, 10 elementos em cada caso; pertencer aos três conjuntos, 15 elementos. O número de elementos que pertencem aos conjuntos B ou C supera o número de elementos que pertencem ao conjunto A em um número igual a\\
+a) 10\hspace{1cm} b) 5\hspace{1cm} c) 15\hspace{1cm} d) 20\hspace{1cm} e) 25\hspace{1cm}  
+\end{exercise}
+\begin{exercise}
+3 (Vunesp) Observe o diagrama de conjuntos e suas intersecções. Os números indicam a quantidade de turistas vindos da cidade K que já visitaram Campinas, Ribeirão Preto e Araraquara.
+\begin{figure}[!h]
+    \centering
+    \includegraphics{fig1.png}
+\end{figure}\\
+Dessa situação, é correto concluir que o número de turistas que visitou apenas uma dessas cidades supera o número daqueles que visitaram apenas duas dessas cidades em\\
+a) 31\hspace{1cm} b) 9\hspace{1cm} c) 34\hspace{1cm} d) 16\hspace{1cm} e) 27\hspace{1cm}
+\end{exercise}
+\begin{exercise}
+4 (Vunesp) Uma enquete foi realizada com 427 pessoas, que haviam lido pelo menos um dentre os livros J, K e L. Dentre as pessoas que leram apenas um desses livros, sabe-se que 116 leram o livro K ou o livro L e que 55 pessoas leram o livro J. Dentre as pessoas que leram dois desses livros e apenas dois, sabe-se que 124 leram os livros J e L ou os livros J e K e que 65 pessoas leram os livros K e L.
+A diferença entre o número de pessoas que leram o livro J e o número de pessoas que não leram esse livro é\\
+a) 71\hspace{1cm} b) 65\hspace{1cm} c) 68\hspace{1cm} d) 82\hspace{1cm} e) 77\hspace{1cm}
+\end{exercise}
+\begin{exercise}
+5 Em um grupo de pessoas, nenhuma delas tem menos que 11 anos, nem mais do que 59 anos. Além disso, nenhuma delas tem uma idade que é um número múltiplo de 10. São 31 dessas pessoas com idades entre 10 e 40 anos. São 27 dessas pessoas com idades entre 20 e 50 anos. São 26 dessas pessoas com idades entre 30 e 60 anos. São 9 dessas pessoas com idades entre 30 e 40 anos. O número de pessoas desse grupo cujas idades são entre 10 e 20 anos ou entre 50 e 60 anos é\\
+a) 19\hspace{1cm} b) 20\hspace{1cm} c) 21\hspace{1cm} d) 22\hspace{1cm} e) 23\hspace{1cm}
+\end{exercise}
+\begin{exercise}
+6 Determine os conjuntos A, B, e C que satisfazem as seguintes condições:
+\begin{enumerate}
+    \item $A\cup B\cup C=$\{z, x, v, u, t, s, r, q, p\}
+    \item $A\cap B =$\{ r, s\}
+    \item $B\cap C=$\{x,s\}
+    \item $C\cap A=$\{ t, s\}
+    \item $A\cup C=$\{x, v, u, t, s, r, q, p\}
+    \item $A\cup B =$\{z, x, t, s, r, q, p\}
+\end{enumerate}
+\end{exercise}
+\begin{exercise}
+7 Em certa comunidade há indivíduos de três cores de pele: branca, negra e amarela. Sabendo que 70 são brancos, 350 são não negros e 50\% são amarelos, responda:
+\begin{enumerate}
+    \begin{enumerate}
+        \item quantos indivíduos tem a comunidade?
+        
+        \item quantos são indivíduos amarelos?
+    \end{enumerate}
+\end{enumerate}
+\end{exercise}
+\begin{exercise}
+8 Dados $\mathbb{A}$ e $\mathbb{B}$ conjuntos tais que $n(\mathbb{A}) = 4$, $n(\mathbb{B}) = 5$ e $n(\mathbb{A}\cap\mathbb{B}) = 3$, determine o número de subconjuntos de $\mathbb{A}\cup\mathbb{B}$.
+\end{exercise}
+\begin{exercise}
+9 Dados os conjuntos $\mathbb{A} = \{1, 2, 3, 4, 5\}$, $\mathbb{B} = \{1, 2, 4, 6, 8\}$ e $\mathbb{C}=\{2,4,5,7\}$, obtenha o conjunto $\mathbb{X}$ tal que $\mathbb{X}\subset\mathbb{A}$ e $\mathbb{A}-\mathbb{X}=\mathbb{B}\cap\mathbb{C}$  
+\end{exercise}
+
+
+
+
+
+
+
+
+
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+\end{document}
